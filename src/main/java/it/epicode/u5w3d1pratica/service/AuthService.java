@@ -19,7 +19,7 @@ public class AuthService {
     private JwtTool jwtTool;
 
     public String login(LoginDto loginDto) throws NotFoundException {
-        User user= userRepository.findByUserName(loginDto.getEmail()).
+        User user= userRepository.findByEmail(loginDto.getEmail()).
                 orElseThrow(() -> new NotFoundException("utente con Username: " + loginDto.getEmail() + " non trovato"));
 
         if(loginDto.getPassword().equals(user.getPassword())){

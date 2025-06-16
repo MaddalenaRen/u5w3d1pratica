@@ -14,7 +14,7 @@ public class UserDto {
     private String nome;
     @NotEmpty(message="il cognome non può essere vuoto")
     private String cognome;
-    @Email()
+    @Email(message = "Inserisci un indirizzo email valido")
     @NotEmpty(message="email non può essere vuoto")
     private String email;
     @NotEmpty(message="password non può essere vuoto")
