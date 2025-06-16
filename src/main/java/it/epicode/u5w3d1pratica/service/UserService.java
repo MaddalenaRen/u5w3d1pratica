@@ -19,7 +19,7 @@ public class UserService {
         User user = new User();
         user.setNome(userDto.getNome());
         user.setCognome(userDto.getCognome());
-        user.setUserName(userDto.getUserName());
+        user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
 
         return userRepository.save(user);
@@ -40,7 +40,7 @@ public class UserService {
 
         userDaAggiornare.setNome(userDto.getNome());
         userDaAggiornare.setCognome(userDto.getCognome());
-        userDaAggiornare.setUserName(userDto.getUserName());
+        userDaAggiornare.setEmail(userDto.getEmail());
         userDaAggiornare.setPassword(userDto.getPassword());
 
         return userRepository.save(userDaAggiornare);

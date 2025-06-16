@@ -14,7 +14,7 @@ public class User {
     private String nome;
     private String cognome;
     @Column(unique = true)
-    private String userName;
+    private String email;
     private String password;
 
 }
