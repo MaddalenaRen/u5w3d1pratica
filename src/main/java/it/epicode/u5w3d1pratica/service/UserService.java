@@ -12,11 +12,14 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
 
-    public User saveUser(UserDto userDto){
+    public User saveUser(UserDto userDto) throws NotFoundException{
+
         User user = new User();
+
         user.setNome(userDto.getNome());
         user.setCognome(userDto.getCognome());
         user.setEmail(userDto.getEmail());
@@ -25,14 +28,14 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public List<User> getAllUser(){
+    public List<User> getUsers(){
 
         return userRepository.findAll();
     }
 
-    public User getUser(int id) throws NotFoundException {
+    public User getUser(int id) throws NotFoundException{
         return userRepository.findById(id).
-                orElseThrow(() -> new NotFoundException("User con id " + id + " non trovato"));
+                orElseThrow(() -> new NotFoundException("User con id:" + id + " non trovato"));
     }
 
     public User updateUser(int id, UserDto userDto) throws NotFoundException {
@@ -46,9 +49,10 @@ public class UserService {
         return userRepository.save(userDaAggiornare);
     }
 
-    public void deleteUser(int id) throws NotFoundException {
-        User userDaCancellare = getUser(id);
 
-        userRepository.delete(userDaCancellare);
+    public void deleteUser(int id) throws NotFoundException {
+        User userDaRimuovere = getUser(id);
+
+        userRepository.delete(userDaRimuovere);
     }
 }
